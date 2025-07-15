@@ -45,21 +45,17 @@ def llama_reply():
 def deepseek():
     return(render_template("deepseek.html"))
 
-@app.route("/deepseek_reply",methods=["GET","POST"])
+@app.route("/deepseek_reply", methods=["GET", "POST"])
 def deepseek_reply():
     q = request.form.get("q")
-    # load model
     client = Groq()
     completion_ds = client.chat.completions.create(
-    model="deepseek-r1-distill-llama-70b",
-    messages=[
-        {
-            "role": "user",
-            "content": "Explain why fast inference is critical for reasoning models"
-        }
-    ]
-)
-print(completion_ds.choices[0].message.content)
+        model="deepseek-r1-distill-llama-70b",
+        messages=[{"role": "user", "content": q}]
+    )
+    reply = completion_ds.choices[0].message.content
+    return render_template("deepseek_reply.html", r=reply)
+
 
 @app.route("/dbs",methods=["GET","POST"])
 def dbs():
