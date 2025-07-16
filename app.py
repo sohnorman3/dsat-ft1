@@ -8,7 +8,11 @@ import requests
 
 import os
 
+# Retrieve the Telegram bot token from an environment variable
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
+if not TELEGRAM_BOT_TOKEN:
+    raise ValueError("The TELEGRAM_BOT_TOKEN environment variable is not set.")
 
 app = Flask(__name__)
 
