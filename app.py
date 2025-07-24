@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request
 import joblib
 from groq import Groq
@@ -24,8 +23,8 @@ def llama():
     return(render_template("llama.html"))
 
 @app.route("/sepia",methods=["GET","POST"])
-def sepia2():
-    return(render_template("sepia_hf.html"))
+def sepia():
+    return(render_template("sepia.html"))
 
 @app.route("/llama_reply",methods=["GET","POST"])
 def llama_reply():
