@@ -4,3 +4,5 @@ joblib
 scikit-learn
 groq
 requests
+datetime
+sqlite3
